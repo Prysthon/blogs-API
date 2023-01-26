@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post(
   '/',
-  loginController.insertUser,
+  loginController.loginUser,
 );
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { validateLogin } = require('./validations/validationLoginValues');
 
-const insertUser = async (userInf) => validateLogin(userInf);
+const loginUser = async (userInf) => validateLogin(userInf);
 
 module.exports = {
-  insertUser,
+  loginUser,
 };
