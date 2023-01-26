@@ -8,6 +8,9 @@ const insertCategory = async (catInf) => {
   return { type: null, message: newCategory };
 };
 
+const getAllCategories = async () => Category.findAll();
+
 module.exports = {
   insertCategory,
+  getAllCategories,
 };

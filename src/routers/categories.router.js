@@ -12,4 +12,10 @@ router.post(
   categoryController.insertUser,
 );
 
+router.get(
+  '/',
+  validateJWT,
+  categoryController.getAllCategories,
+);
+
 module.exports = router;
