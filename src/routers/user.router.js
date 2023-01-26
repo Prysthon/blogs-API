@@ -17,4 +17,10 @@ router.get(
   userController.getAllUsers,
 );
 
+router.get(
+  '/:id',
+  validateJWT,
+  userController.getUserById,
+);
+
 module.exports = router;
