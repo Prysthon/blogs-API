@@ -1,8 +1,8 @@
 const { User } = require('../../models');
-const { insertUserSchema } = require('./schema');
+const { loginUserSchema } = require('./schema');
 
 const validateLogin = async (userInf) => {
-  const error = await insertUserSchema.validate(userInf);
+  const error = await loginUserSchema.validate(userInf);
   if (error.error) return { type: 'INVALID_FIELDS', message: 'Some required fields are missing' };
   const user = await User.findOne({
     where: { email: userInf.email },
