@@ -14,6 +14,13 @@ const insertUser = async (userInf) => {
   return { type: null, message: '' };
 };
 
+const getAllUsers = async () => User.findAll({
+    attributes: {
+      exclude: ['password'],
+    },
+  });
+
 module.exports = {
   insertUser,
+  getAllUsers,
 };
