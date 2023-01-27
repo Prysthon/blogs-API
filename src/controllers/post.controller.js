@@ -8,7 +8,13 @@ const insertPost = async (req, res) => {
 };
 
 const getAllPosts = async (req, res) => {
-  const { type, message } = await postService.getAllPosts(req.body, req.user);
+  const { type, message } = await postService.getAllPosts();
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+  res.status(200).json(message);
+};
+
+const getPostById = async (req, res) => {
+  const { type, message } = await postService.getPostById(req.params.id);
   if (type) return res.status(errorMap.mapError(type)).json({ message });
   res.status(200).json(message);
 };
@@ -16,4 +22,5 @@ const getAllPosts = async (req, res) => {
 module.exports = {
   insertPost,
   getAllPosts,
+  getPostById,
 };
