@@ -1,6 +1,6 @@
 const { getAllCategories } = require('../categories.service');
 
-const { insertPostSchema } = require('./schema');
+const { insertPostSchema, updatePostSchema } = require('./schema');
 
 const validatePost = async (postInf) => {
   const error = await insertPostSchema.validate(postInf);
@@ -16,6 +16,13 @@ const validatePost = async (postInf) => {
   return { type: null, message: '' };
 };
 
+const validateUpdatePost = async (newPost) => {
+  const error = await updatePostSchema.validate(newPost);
+  if (error.error) return { type: 'INVALID_FIELDS', message: 'Some required fields are missing' };
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validatePost,
+  validateUpdatePost,
 };

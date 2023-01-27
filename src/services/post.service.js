@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const { User, BlogPost, PostCategory, Category } = require('../models');
-const { validatePost } = require('./validations/validationPostValues');
+const { validatePost, validateUpdatePost } = require('./validations/validationPostValues');
 
 const config = require('../config/config');
 
@@ -61,8 +61,22 @@ const getPostById = async (postId) => {
   return { type: null, message: post };
 };
 
+const updatePost = async (newPost, postId, email) => {
+  const { id } = await User.findOne({ where: { email } });
+  const { userId } = await BlogPost.findOne({ where: { id: postId } });
+  if (!userId || userId !== id) return { type: 'UNAUTHORIZED', message: 'Unauthorized user' };
+  const error = await validateUpdatePost(newPost);
+  if (error.type) return error;
+  await BlogPost.update({ title: newPost.title, content: newPost.content }, {
+    where: { id: postId },
+  });
+  const { message } = await getPostById(postId);
+  return { type: null, message };
+};
+
 module.exports = {
   insertPost,
   getAllPosts,
   getPostById,
+  updatePost,
 };
