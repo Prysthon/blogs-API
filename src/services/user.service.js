@@ -33,8 +33,15 @@ const getUserById = async (id) => {
   return { type: null, message: user };
 };
 
+const deleteUserByToken = async (email) => {
+  const { id } = await User.findOne({ where: { email } });
+  await User.destroy({ where: { id }, force: true });
+  return { type: null, message: '' };
+};
+
 module.exports = {
   insertUser,
   getAllUsers,
   getUserById,
+  deleteUserByToken,
 };
