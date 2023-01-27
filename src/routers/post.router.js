@@ -12,4 +12,10 @@ router.post(
   postController.insertPost,
 );
 
+router.get(
+  '/',
+  validateJWT,
+  postController.getAllPosts,
+);
+
 module.exports = router;
