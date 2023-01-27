@@ -30,4 +30,10 @@ router.put(
   postController.updatePost,
 );
 
+router.delete(
+  '/:id',
+  validateJWT,
+  postController.deletePost,
+);
+
 module.exports = router;
