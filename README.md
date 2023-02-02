@@ -29,7 +29,7 @@ Neste projeto foi **desenvolvido uma API e um banco de dados** para a produção
     ```
         docker exec -it blogs_api bash
     ```
-        1. Dentro do container, instale as dependências: 
+      1. Dentro do container, instale as dependências: 
     ```
         npm install
     ```
