@@ -25,11 +25,11 @@ Neste projeto foi **desenvolvido uma API e um banco de dados** para a produção
     ```
         docker-compose up -d --build
     ```
-    1. Use o comando: 
+    2. Use o comando: 
     ```
         docker exec -it blogs_api bash
     ```
-      1. Dentro do container, instale as dependências: 
+    3. Dentro do container, instale as dependências: 
     ```
         npm install
     ```
@@ -39,7 +39,7 @@ Neste projeto foi **desenvolvido uma API e um banco de dados** para a produção
     ```
         npm start
     ```
-    1. Caso deseje que o banco de dados venha com dados prontos, execute:
+    2. Caso deseje que o banco de dados venha com dados prontos, execute:
     ```
         npm run seed
         npm start
